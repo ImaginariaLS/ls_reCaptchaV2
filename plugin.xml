@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
     <name>
-        <lang name="default">Recaptcha_v2</lang>
-        <lang name="russian">Recaptcha_v2</lang>
+        <lang name="default">RecaptchaV2</lang>
+        <lang name="russian">RecaptchaV2</lang>
     </name>
     <author>
         <lang name="default">Karel Wintersky</lang>

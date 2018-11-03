@@ -10,14 +10,19 @@
 
 // Ключи можно получить здесь https://www.google.com/recaptcha/admin/create
 
+/*
+Конфиг описывается в файле /config/config.local.php так
 
-// Получение значений из конфига `config.local.php`
-// $config = Config::Get('recaptcha');
-
-// Config for ReCaptcha
 $config['recaptcha'] = [
     'public_key'    =>  '',
     'private_key'   =>  ''
 ];
 
+*/
+
+// Получение значений из конфига `config.local.php`
+$config = Config::Get('recaptcha');
+
 return $config;
+
+// хотя это двойная работа, в общем-то. Правильно объявлять $config['plugin']['recaptcha'] = ... глобально, а тут ничего не делать

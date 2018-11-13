@@ -10,17 +10,30 @@
 
 class PluginRecaptcha_HookRecaptcha extends Hook
 {
+    const ConfigKey = 'recaptcha';
+    const HooksArray = [
+
+        // на странице https://imaginaria.ru/registration/
+        'template_block_registration_captcha'       =>  'Recaptcha',
+
+        // в модальном окне регистрации
+        'template_block_popup_registration_captcha' => 'Recaptcha_modal'
+    ];
 
     /*
      * Регистрация событий на хуки
      */
     public function RegisterHook()
     {
-        // на странице https://imaginaria.ru/registration/
-        $this->addHook('template_block_registration_captcha', 'Recaptcha');
-
-        // в модальном окне регистрации
-        $this->addHook('template_block_popup_registration_captcha', 'Recaptcha_modal');
+        $plugin_config_key = $this::ConfigKey;
+        foreach ($this::HooksArray as $hook => $callback) {
+            $this->AddHook(
+                $hook,
+                $callback,
+                __CLASS__,
+                Config::Get("plugin.{$plugin_config_key}.hook_priority.{$hook}") ?? 1
+            );
+        }
     }
 
     public function Recaptcha()
